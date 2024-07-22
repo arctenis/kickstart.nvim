@@ -46,7 +46,5 @@ return {
         path = '~/Documents/work',
       },
     },
-
-    -- see below for full list of options 👇
   },
 }

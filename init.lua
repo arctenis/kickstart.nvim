@@ -157,6 +157,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Set conceallevel to 1 for obsidian.nvim
+vim.opt.conceallevel = 1
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -284,9 +287,10 @@ require('lazy').setup({
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     config = function() -- This is the function that runs, AFTER loading
       require('which-key').setup()
+      local wk = require 'which-key'
 
       -- Document existing key chains
-      require('which-key').register {
+      wk.add {
         { '<leader>c', group = '[C]ode' },
         { '<leader>c_', hidden = true },
         { '<leader>d', group = '[D]ocument' },
@@ -303,7 +307,7 @@ require('lazy').setup({
         { '<leader>w_', hidden = true },
       }
       -- visual mode
-      require('which-key').register {
+      wk.add {
         { '<leader>h', desc = 'Git [H]unk', mode = 'v' },
       }
     end,
