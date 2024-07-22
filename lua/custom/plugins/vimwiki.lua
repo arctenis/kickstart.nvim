@@ -7,11 +7,6 @@ return {
         syntax = 'default',
         ext = '.wiki',
       },
-      {
-        path = '~/Documents/notes/',
-        syntax = 'markdown',
-        ext = '.md',
-      },
     }
   end,
 }
