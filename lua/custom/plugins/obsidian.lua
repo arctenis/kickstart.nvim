@@ -13,8 +13,6 @@ return {
   dependencies = {
     -- Required.
     'nvim-lua/plenary.nvim',
-
-    -- see below for full list of optional dependencies 👇
   },
   daily_notes = {
     -- Optional, if you keep daily notes in a separate directory.

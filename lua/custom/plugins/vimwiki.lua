@@ -1,6 +1,7 @@
 return {
   'vimwiki/vimwiki',
-  enabled = false,
+  -- Set to false to deactivate because of obsidian.nvim incompatibility.
+  enabled = true,
   init = function()
     vim.g.vimwiki_list = {
       {
