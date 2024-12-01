@@ -98,6 +98,9 @@ vim.g.have_nerd_font = true
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+-- Disable swap file
+vim.opt.swapfile = false
+
 -- Set Tab to 4 spaces
 vim.opt.tabstop = 4
 
@@ -235,6 +238,25 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
+
+  {
+    'nvimtools/none-ls.nvim',
+    config = function()
+      local null_ls = require 'null-ls'
+      null_ls.setup {
+        sources = {
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.completion.spell,
+          null_ls.builtins.diagnostics.djlint,
+          null_ls.builtins.formatting.djlint.with {
+            extra_args = { '--indent', '2' },
+          },
+          null_ls.builtins.formatting.black,
+        },
+      }
+    end,
+  },
+
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
@@ -625,7 +647,7 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'prettier', -- Used to format HTML, CSS, etc.
-        'ruff', -- Used to format Python code
+        -- 'ruff', -- Used to format Python code
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -671,10 +693,11 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        python = { 'ruff', 'black' },
+        -- python = { 'ruff', 'black' },
+        python = { 'black' },
         html = { 'prettier' },
         css = { 'prettier' },
-        htmldjango = { 'djlint' },
+        -- htmldjango = { 'djlint' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -791,6 +814,7 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+          { name = 'supermaven' },
         },
       }
     end,

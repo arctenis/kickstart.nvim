@@ -9,6 +9,11 @@ return {
         syntax = 'default',
         ext = '.wiki',
       },
+      {
+        path = '~/Sites/arctenis/',
+        syntax = 'default',
+        ext = '.wiki',
+      },
     }
   end,
 }
