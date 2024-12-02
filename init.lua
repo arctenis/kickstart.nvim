@@ -239,23 +239,23 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 
-  {
-    'nvimtools/none-ls.nvim',
-    config = function()
-      local null_ls = require 'null-ls'
-      null_ls.setup {
-        sources = {
-          null_ls.builtins.formatting.stylua,
-          null_ls.builtins.completion.spell,
-          null_ls.builtins.diagnostics.djlint,
-          null_ls.builtins.formatting.djlint.with {
-            extra_args = { '--indent', '2' },
-          },
-          null_ls.builtins.formatting.black,
-        },
-      }
-    end,
-  },
+  -- {
+  --   'nvimtools/none-ls.nvim',
+  --   config = function()
+  --     local null_ls = require 'null-ls'
+  --     null_ls.setup {
+  --       sources = {
+  --         null_ls.builtins.formatting.stylua,
+  --         null_ls.builtins.completion.spell,
+  --         null_ls.builtins.diagnostics.djlint,
+  --         null_ls.builtins.formatting.djlint.with {
+  --           extra_args = { '--indent', '2' },
+  --         },
+  --         null_ls.builtins.formatting.black,
+  --       },
+  --     }
+  --   end,
+  -- },
 
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
@@ -607,6 +607,14 @@ require('lazy').setup({
         -- clangd = {},
         -- gopls = {},
         pyright = {},
+        html = {
+          settings = {
+            html = {
+              suggest = { html5 = true },
+            },
+          },
+          filetypes = { 'html', 'htmldjango' },
+        },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
